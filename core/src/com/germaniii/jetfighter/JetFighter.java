@@ -1,31 +1,30 @@
 package com.germaniii.jetfighter;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-public class JetFighter extends ApplicationAdapter {
+public class JetFighter extends Game {
+	ShapeRenderer shape;
+	BitmapFont font;
 	SpriteBatch batch;
-	Texture img;
 	
 	@Override
 	public void create () {
+		shape = new ShapeRenderer();
+		font = new BitmapFont();
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		setScreen(new TitleScreen(this));
 	}
 
 	@Override
-	public void render () {
-		ScreenUtils.clear(1, 0, 0, 1);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
-	}
-	
-	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
+		font.dispose();
+		shape.dispose();
 	}
 }
