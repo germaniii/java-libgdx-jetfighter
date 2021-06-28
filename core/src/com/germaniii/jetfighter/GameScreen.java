@@ -51,11 +51,16 @@ public class GameScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         inputHandler(delta);
+        renderHandler();
+    }
 
-        if (is_running){
+    @Override
+    public void hide(){
+        shapeRenderer.dispose();
+        game.batch.dispose();
+    }
 
-        }
-
+    private void renderHandler(){
         // Render Segment
         game.batch.begin();
         game.font.draw(game.batch, "Black", game.screenWidth * 3/12, game.screenHeight * 14/15);
@@ -70,13 +75,6 @@ public class GameScreen extends ScreenAdapter {
         shapeRenderer.setColor(1,1, 1, 1);
         shapeRenderer.circle(jet2.getX(), jet2.getY(), jet2.getRad());
         shapeRenderer.end();
-
-    }
-
-    @Override
-    public void hide(){
-        shapeRenderer.dispose();
-        game.batch.dispose();
     }
 
     private void inputHandler(float delta){
