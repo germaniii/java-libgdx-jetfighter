@@ -23,7 +23,14 @@ public class TitleScreen extends ScreenAdapter{
                     game.setScreen(new GameScreen(game));
                 return true;
             }
+
+            @Override
+            public boolean touchDown(int x, int y, int pointer, int button){
+                game.setScreen(new GameScreen(game));
+                return true;
+            }
         });
+
 
     }
 
